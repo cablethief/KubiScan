@@ -382,7 +382,7 @@ def get_jwt_and_decode(pod, risky_users, volume):
     	secret = api_client.CoreV1Api.read_namespaced_secret(name=volume.secret.secret_name,
         	                                                 namespace=pod.metadata.namespace)
     except Exception:
-	secret = None
+        secret = None
     if secret is not None and secret.data is not None:
         if 'token' in secret.data:
             decoded_data = decode_base64_jwt_token(secret.data['token'])
